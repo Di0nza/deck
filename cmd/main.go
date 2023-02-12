@@ -13,6 +13,10 @@ var suits = [4]string{"spade", "diamond", "club", "heart"}
 var values = [13]int{1, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2}
 var suitValues = [4]int{1, 2, 3, 4}
 
+type MyDeck struct {
+	deck.Card
+}
+
 func CreateDeck36() []deck.Card {
 	cards := make([]deck.Card, 0, 36)
 	for i := 0; i < 4; i++ {
@@ -37,7 +41,7 @@ func CreateDeck52() []deck.Card {
 
 func PrintDeck(d []deck.Card) {
 	border := len(d) / 4
-	for i := 0; i < len(d); i++ {
+	for i := range d {
 		fmt.Print(d[i].Name + " " + d[i].Suit + "; ")
 		if float32((i+1)%border) == 0 {
 			fmt.Println()
@@ -71,11 +75,59 @@ func SortDeck(d []deck.Card) {
 	}
 }
 
+func AppendDeck(current []deck.Card, appended []deck.Card) []deck.Card {
+	for _, card := range appended {
+		current = append(current, card)
+	}
+	return current
+}
+
+/*func DeleteCard(d []deck.Card, card string) []deck.Card {
+	length := len(d)
+	for i := 0; i < length; i++ {
+		if d[i].Name == card {
+			copy(d[i:], d[i+1:])
+			d[len(d)-1] = deck.Card{Name: "0", Suit: "0", Value: 0, SuitValue: 0}
+			d = d[:len(d)-1]
+			length--
+		}
+	}
+	return d
+}*/
+
+func DeleteCard(d []deck.Card, card string) []deck.Card {
+	b := d[:0]
+	for i, x := range d {
+		if d[i].Name != card {
+			b = append(b, x)
+		}
+	}
+	return b
+}
+
+func AddJokers(d []deck.Card, amount int) []deck.Card {
+	joker := deck.Card{Name: "Joker", Suit: "", Value: 0, SuitValue: 0}
+	for i := 0; i < amount; i++ {
+		d = append(d, joker)
+	}
+	return d
+}
+
 func main() {
 	newDeck := CreateDeck36()
 	PrintDeck(newDeck)
 	ShuffleDeck(newDeck)
 	PrintDeck(newDeck)
 	SortDeck(newDeck)
+	PrintDeck(newDeck)
+	newDeck = AppendDeck(newDeck, CreateDeck36())
+	PrintDeck(newDeck)
+	ShuffleDeck(newDeck)
+	PrintDeck(newDeck)
+	SortDeck(newDeck)
+	PrintDeck(newDeck)
+	DeleteCard(newDeck, "A")
+	PrintDeck(newDeck)
+	newDeck = AddJokers(newDeck, 2)
 	PrintDeck(newDeck)
 }
