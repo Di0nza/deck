@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Di0nza/deckOfCards/pkg/deck"
+	deck "github.com/Di0nza/deckOfCards/pkg/deck"
 )
 
 func main() {
