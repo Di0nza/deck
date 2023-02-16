@@ -1,4 +1,4 @@
-package deck
+package deck_of_cards
 
 import (
 	"fmt"
@@ -6,6 +6,8 @@ import (
 	"sort"
 	"time"
 )
+
+type Cards []Card
 
 const (
 	Joker CardValue = iota
