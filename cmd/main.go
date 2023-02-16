@@ -1,7 +1,7 @@
 package main
 
 import (
-	"deckOfCards/pkg/deck"
+	"github.com/Di0nza/deckOfCards/pkg/deck"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 	deck.PrintDeck(newDeck)
 	deck.SortDeck(newDeck)
 	deck.PrintDeck(newDeck)
-	newDeck = deck.DeleteCard(newDeck, deck.Joker)
+	newDeck = deck.DeleteCard(newDeck, deck.Ace)
 	deck.PrintDeck(newDeck)
 
 	multiplyDeck := deck.CreateMultiplyDeck(2)

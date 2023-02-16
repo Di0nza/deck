@@ -1,4 +1,4 @@
-package deck
+package deckOfCards
 
 type CardValue uint8
 type SuitValue uint8
