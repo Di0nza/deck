@@ -1,8 +1,9 @@
 package deck
 
+type CardValue uint8
+type SuitValue uint8
+
 type Card struct {
-	Name      string
-	Suit      string
-	Value     int
-	SuitValue int
+	Name CardValue
+	Suit SuitValue
 }
