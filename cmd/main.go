@@ -1,6 +1,8 @@
 package main
 
-import "deckOfCards/deck"
+import (
+	"deckOfCards/pkg/deck"
+)
 
 func main() {
 	newDeck := deck.CreateDeck52()
@@ -17,5 +19,4 @@ func main() {
 	deck.PrintDeck(multiplyDeck)
 	multiplyDeck = deck.DeleteCard(multiplyDeck, deck.Ace)
 	deck.PrintDeck(multiplyDeck)
-
 }
