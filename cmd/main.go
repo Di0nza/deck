@@ -5,9 +5,9 @@ import (
 )
 
 func main() {
-	newDeck := deck.CreateDeck52()
+	newDeck := deck.NewDeck()
 	deck.PrintDeck(newDeck)
-	newDeck = deck.AddJokers(newDeck, 3)
+	newDeck = deck.AddJokers(newDeck, 2)
 	deck.ShuffleDeck(newDeck)
 	deck.PrintDeck(newDeck)
 	deck.SortDeck(newDeck)

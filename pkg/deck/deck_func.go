@@ -54,7 +54,7 @@ func (c Card) String() string {
 	return fmt.Sprintf("%s of %s's; ", names[c.Name], suit)
 }
 
-func CreateDeck52() []Card {
+func NewDeck() []Card {
 	cards := make([]Card, 0, 52)
 	suitI := 13
 	for i := 0; i < 4; i++ {
@@ -94,9 +94,9 @@ func appendDeck(current []Card, appended []Card) []Card {
 }
 
 func CreateMultiplyDeck(decksAmount int) []Card {
-	d := CreateDeck52()
-	for i := 0; i < decksAmount-1; i++ {
-		d = appendDeck(d, CreateDeck52())
+	d := make([]Card, 0, decksAmount*52)
+	for i := 0; i < decksAmount; i++ {
+		d = appendDeck(d, NewDeck())
 	}
 	return d
 }
